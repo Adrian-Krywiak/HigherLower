@@ -15,9 +15,11 @@ BollywoodMovies.forEach(movie => {
       }
     })
 })
-let MovieArray = BollywoodMovies.filter(movie => movie.ratings > 5 && movie.votes > 5000)
+let MovieArray = BollywoodMovies.filter(movie => movie.ratings > 0 && movie.votes > 0)
 
-  
+function formatNumberWithCommas(number) {
+  return number.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
 function Card(props) {
   // Picking Random Movies from an Array
   const rnum1 = MovieArray[Math.floor(Math.random()*MovieArray.length)]
@@ -60,13 +62,30 @@ function Card(props) {
         setLost('true')
       }, 1000)
    }
-   function AnimatedCounter(){
-      if (withRatings) {
-        return <CountUp className='counter' style={ showCounter ? {opacity: 1} : {opacity: 0}} end={ showCounter ? movies[1].ratings : 0} decimals={1} duration={0.3} />
-      } else {
-        return <CountUp className='counter' style={ showCounter ? {opacity: 1} : {opacity: 0}} end={ showCounter? movies[1].votes : 0} duration={0.3} />
-      }
-   }
+   function AnimatedCounter() {
+    if (withRatings) {
+      return (
+        <CountUp
+          className='counter'
+          style={showCounter ? { opacity: 1 } : { opacity: 0 }}
+          end={showCounter ? movies[1].ratings : 0}
+          decimals={1}
+          duration={0.3}
+          formattingFn={formatNumberWithCommas}
+        />
+      );
+    } else {
+      return (
+        <CountUp
+          className='counter'
+          style={showCounter ? { opacity: 1 } : { opacity: 0 }}
+          end={showCounter ? movies[1].votes : 0}
+          duration={0.3}
+          formattingFn={formatNumberWithCommas}
+        />
+      );
+    }
+  }
  
   const displayMovies = movies.map((movie, index)=>{
     if (index === 0){
@@ -79,7 +98,7 @@ function Card(props) {
         <img src={movie.poster_path} alt="" className="movie-bg" /> 
         <div className="about-movie">
           <h2 className='movie-title'>{movie.title}</h2>
-         { withRatings ? <h3> is rated {movie.ratings}</h3> : <h3>has a popularity of {movie.votes} </h3>}
+         { withRatings ? <h3 className='other_title'> produces {movie.ratings.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })} tons of CO2</h3> : <h3>has a popularity of {movie.votes} </h3>}
         </div>                                                                                                                                              
       </motion.div>
       )
