@@ -98,7 +98,7 @@ function Card(props) {
         <img src={movie.poster_path} alt="" className="movie-bg" /> 
         <div className="about-movie">
           <h2 className='movie-title'>{movie.title}</h2>
-         { withRatings ? <h3 className='other_title'> produces {movie.ratings.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })} tons of CO2</h3> : <h3>has a popularity of {movie.votes} </h3>}
+         { withRatings ? <h3 className='other_title'> produit {movie.ratings.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })} tonnes de CO2</h3> : <h3>has a popularity of {movie.votes} </h3>}
         </div>                                                                                                                                              
       </motion.div>
       )
@@ -115,7 +115,7 @@ function Card(props) {
       animate={{opacity: 1}}
       exit={{opacity: 0}}
       className="about-movie">
-        <h2 className='movie-title'><b>'{movie.title}'</b>  is?</h2>
+        <h2 className='movie-title'><b>'{movie.title}'</b>  est?</h2>
         <div className="btn-wrapper">
         <button className="btn" onClick={()=>{
           setShowCounter(true)
@@ -124,7 +124,7 @@ function Card(props) {
             } else {
               movies[0].votes < movie.votes ? guessedCorrect() : movies[0].votes ===  movie.votes ? guessedCorrect() : guessedWrong()
             }      
-          }} >Higher  <div className='arrow-up'></div>  
+          }} >Plus  <div className='arrow-up'></div>  
         </button>
         <button className="btn" onClick={()=>{
             setShowCounter(true)
@@ -133,7 +133,7 @@ function Card(props) {
               } else {
                 movies[0].votes > movie.votes ? guessedCorrect() : movies[0].votes ===  movie.votes ? guessedCorrect() : guessedWrong()
               } 
-        }}>Lower <div className='arrow-down'></div></button>
+        }}>Moins <div className='arrow-down'></div></button>
       </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
         <AnimatedCounter />
         </motion.div>
@@ -144,7 +144,7 @@ function Card(props) {
  return (  
 	            <div className="lost-overlay">
 	            <div className="lost-box">
-	            <h2>You Lost</h2>
+	            <h2>Vous Avez Perdu</h2>
 	            </div>
 	            </div> 
  )
