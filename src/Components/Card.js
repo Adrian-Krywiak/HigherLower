@@ -96,69 +96,62 @@ function Card(props) {
       );
     }
   }
- 
-  const displayMovies = movies.map((movie, index)=>{
-    if (index === 0){
-      return( 
-        <motion.div
-         exit= {{x: '-50%'}}
-        className='section1'>
-        
-        <img src= {ImageNotFound} alt="" className='movie-bg2' />
-        <img src={movie.poster_path} alt="" className="movie-bg" /> 
-        <div className="about-movie">
-          <h2 className='movie-title'>{movie.title}</h2>
-         { withRatings ? <h3 className='other_title'> produces {movie.ratings.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })} tons of CO2</h3> : <h3>has a popularity of {movie.votes} </h3>}
-        </div>                                                                                                                                              
-      </motion.div>
-      )
-    } else if(index === 1) {
+
+  const displayMovies = movies.map((movie, index) => {
+    if (index === 0) {
       return (
-        
-        <motion.div 
-        className={animate ? 'section2-animate' : 'section2'} >
-              {animate ? <div className='section3'></div> : null}
-      <img src= {ImageNotFound} alt="" className='movie-bg2' />
-      <img src={movie.poster_path} alt="" className="movie-bg" /> 
-      <motion.div
-      initial={{opacity: 0}}
-      animate={{opacity: 1}}
-      exit={{opacity: 0}}
-      className="about-movie">
-        <h2 className='movie-title'><b>'{movie.title}'</b>  is?</h2>
-        <div className="btn-wrapper">
-        <button className="btn" onClick={()=>{
-          setShowCounter(true)
-            if (withRatings) {
-              movies[0].ratings < movie.ratings ? guessedCorrect() : movies[0].ratings ===  movie.ratings  ? guessedCorrect() : guessedWrong()
-            } else {
-              movies[0].votes < movie.votes ? guessedCorrect() : movies[0].votes ===  movie.votes ? guessedCorrect() : guessedWrong()
-            }      
-          }} >Higher  <div className='arrow-up'></div>  
-        </button>
-        <button className="btn" onClick={()=>{
-            setShowCounter(true)
-              if (withRatings) {
-                movies[0].ratings > movie.ratings  ? guessedCorrect() : movies[0].ratings ===  movie.ratings ? guessedCorrect() : guessedWrong()
-              } else {
-                movies[0].votes > movie.votes ? guessedCorrect() : movies[0].votes ===  movie.votes ? guessedCorrect() : guessedWrong()
-              } 
-        }}>Lower <div className='arrow-down'></div></button>
-      </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-        <AnimatedCounter />
+        <motion.div exit={{ x: '-50%' }} className='section1'>
+          <img src={ImageNotFound} alt="" className='movie-bg2' />
+          <img src={movie.poster_path} alt="" className="movie-bg" />
+          <div className="about-movie">
+            <h2 className='movie-title'>{movie.title}</h2>
+            {withRatings ? <h3 className='large-text'> produces {movie.ratings.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })} tons of CO2</h3> : <h3>has a popularity of {movie.votes}</h3>}
+          </div>
         </motion.div>
-    </motion.div>
-    )}
-  })
-    function YouLost(){ 
- return (  
-	            <div className="lost-overlay">
-	            <div className="lost-box">
-	            <h2>You Lost</h2>
-	            </div>
-	            </div> 
- )
+      );
+    } else if (index === 1) {
+      return (
+        <motion.div className={animate ? 'section2-animate' : 'section2'}>
+          {animate ? <div className='section3'></div> : null}
+          <img src={ImageNotFound} alt="" className='movie-bg2' />
+          <img src={movie.poster_path} alt="" className="movie-bg" />
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="about-movie">
+            <h2 className='movie-title'><b>'{movie.title}'</b> is?</h2>
+            <div className="btn-wrapper">
+              <button className="btn" onClick={() => {
+                setShowCounter(true);
+                if (withRatings) {
+                  movies[0].ratings < movie.ratings ? guessedCorrect() : movies[0].ratings === movie.ratings ? guessedCorrect() : guessedWrong();
+                } else {
+                  movies[0].votes < movie.votes ? guessedCorrect() : movies[0].votes === movie.votes ? guessedCorrect() : guessedWrong();
+                }
+              }}>Higher  <div className='arrow-up'></div>
+              </button>
+              <button className="btn" onClick={() => {
+                setShowCounter(true);
+                if (withRatings) {
+                  movies[0].ratings > movie.ratings ? guessedCorrect() : movies[0].ratings === movie.ratings ? guessedCorrect() : guessedWrong();
+                } else {
+                  movies[0].votes > movie.votes ? guessedCorrect() : movies[0].votes === movie.votes ? guessedCorrect() : guessedWrong();
+                }
+              }}>Lower <div className='arrow-down'></div></button>
+            </div>
+            <AnimatedCounter />
+          </motion.div>
+        </motion.div>
+      );
     }
+  });
+
+  function YouLost() {
+    return (
+      <div className="lost-overlay">
+        <div className="lost-box">
+          <h2>You Lost</h2>
+        </div>
+      </div>
+    );
+  }
 
   function DisplayCards() {
     return displayMovies;
