@@ -147,7 +147,7 @@ function Card(props) {
     return (
       <div className="lost-overlay">
         <div className="lost-box">
-          <h2>vous Avez Perdu</h2>
+          <h2>Vous Avez Perdu</h2>
         </div>
       </div>
     );
