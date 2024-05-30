@@ -125,7 +125,7 @@ function Card(props) {
                 } else {
                   movies[0].votes < movie.votes ? guessedCorrect() : movies[0].votes === movie.votes ? guessedCorrect() : guessedWrong();
                 }
-              }}>Higher  <div className='arrow-up'></div>
+              }}>Plus  <div className='arrow-up'></div>
               </button>
               <button className="btn" onClick={() => {
                 setShowCounter(true);
@@ -134,7 +134,7 @@ function Card(props) {
                 } else {
                   movies[0].votes > movie.votes ? guessedCorrect() : movies[0].votes === movie.votes ? guessedCorrect() : guessedWrong();
                 }
-              }}>Lower <div className='arrow-down'></div></button>
+              }}>Moins <div className='arrow-down'></div></button>
             </div>
             <AnimatedCounter />
           </motion.div>
