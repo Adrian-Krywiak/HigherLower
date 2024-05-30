@@ -5,6 +5,10 @@
   box-sizing: border-box;
   font-family: 'Josefin sans', sans-serif;
 }
+.smaller_text{
+  font-size: 47px;
+
+}
 .App{
   display: flex;
   height: 100vh;

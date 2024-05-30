@@ -116,7 +116,7 @@ function Card(props) {
           <img src={ImageNotFound} alt="" className='movie-bg2' />
           <img src={movie.poster_path} alt="" className="movie-bg" />
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="about-movie">
-            <h2 className='movie-title'><b>'{movie.title}'</b> est?</h2>
+            <h2 className='smaller_text'><b className='movie-title'>'{movie.title}'</b> est?</h2>
             <div className="btn-wrapper">
               <button className="btn" onClick={() => {
                 setShowCounter(true);
